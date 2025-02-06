@@ -34,15 +34,17 @@ function agregarAmigo(){
     } else if(nombreDeAmigo.length === 1){
         asignarTextoElemento('#error',`El nombre debe tener mas de una letra`);
         return
+    } else if(listaNombresDeAmigos.includes(nombreDeAmigo.toUpperCase())){
+        asignarTextoElemento('#error',`El nombre ya se encuentra en la lista`);
+        return
     } else {
-        listaNombresDeAmigos.push(nombreDeAmigo);
+        listaNombresDeAmigos.push(nombreDeAmigo.toUpperCase());
         if(listaNombresDeAmigos.length === 1){
             document.querySelector('.button-draw').removeAttribute('disabled');
         }
         agregarNombreLista('#listaAmigos', nombreDeAmigo);
         limpiarInput('#amigo');
         asignarTextoElemento('#error', '');
-        return
     }
 }
 
